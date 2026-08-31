@@ -33,4 +33,5 @@ platform, 3psLCCA version, and steps to reproduce the problem.
 ### Can I build my own version of 3psLCCA?
 
 Yes. Clone the [3psLCCA-gui](https://github.com/3psLCCA/3psLCCA-gui/) repository and follow the
-build instructions in its README to set up and run the application from source.
+build instructions in its README to set up and run a developer version, dev build, or local build
+of the application from source.
