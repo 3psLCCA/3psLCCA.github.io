@@ -30,16 +30,41 @@ This option bundles a portable LaTeX distribution needed for PDF report generati
 only option on macOS.
 :::
 
+Remove the `defaults` channel so package resolution doesn't conflict with the channels below:
+
 ```bash
 conda config --remove channels defaults
+```
+
+Add the channels that host 3psLCCA and its dependencies, in priority order:
+
+```bash
 conda config --add channels conda-forge
 conda config --add channels osdag
 conda config --add channels zehen-249
+```
 
+Create a dedicated environment for 3psLCCA:
+
+```bash
 conda create -n 3pslcca
-conda activate 3pslcca
-conda install three-ps-lcca-gui
+```
 
+Activate the environment (repeat this in any new terminal session before running the app):
+
+```bash
+conda activate 3pslcca
+```
+
+Install the application package into the active environment:
+
+```bash
+conda install three-ps-lcca-gui
+```
+
+Launch the application:
+
+```bash
 threePSLCCA
 ```
 

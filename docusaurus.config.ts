@@ -85,12 +85,8 @@ const config: Config = {
         {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
-          type: 'docsVersionDropdown',
           position: 'right',
+          label: 'Docs',
         },
         {
           href: 'https://github.com/3psLCCA',
@@ -124,8 +120,17 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'Social Media',
+          items: [
+            {
+              label: 'LinkedIn',
+              href: 'https://in.linkedin.com/company/osdag',
+            },
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 3psLCCA. Built with Docusaurus.`,
+      copyright: 'Made with ❤️ by Team Osdag',
     },
     prism: {
       theme: prismThemes.github,

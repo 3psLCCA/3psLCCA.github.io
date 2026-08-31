@@ -61,3 +61,19 @@
     animation: none;
   }
 }
+
+/* Heading above the right-side "On this page" table of contents. Lives
+   inside the same sticky/scrollable box as the TOC list, pinned to its
+   top so it stays visible while the list scrolls beneath it. */
+.table-of-contents__title {
+  position: sticky;
+  top: 0;
+  background: var(--ifm-background-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-content-secondary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}

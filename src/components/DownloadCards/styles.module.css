@@ -17,15 +17,18 @@
   border-radius: var(--ifm-card-border-radius, 8px);
   background: var(--ifm-background-surface-color);
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  outline: none;
 }
 
 .card:hover {
   box-shadow: var(--ifm-global-shadow-lw);
 }
 
-.cardRecommended {
+.cardSelected {
   border-color: var(--ifm-color-primary);
   border-width: 2px;
+  box-shadow: var(--ifm-global-shadow-lw);
 }
 
 .badge {

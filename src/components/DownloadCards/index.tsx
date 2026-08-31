@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import {useState} from 'react';
 import Link from '@docusaurus/Link';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import type {ReleaseData} from '../../../plugins/latest-release-plugin';
@@ -28,16 +29,33 @@ const CARDS: {platform: Platform; label: string; detail: string; icon: string}[]
 export default function DownloadCards(): ReactNode {
   const release = usePluginData('latest-release-plugin') as ReleaseData;
   const detected = usePlatform();
+  const recommendedPlatform = CARDS.find(
+    (card) => DETECTED_MATCH[card.platform] === detected,
+  )?.platform;
+  const [selected, setSelected] = useState<Platform | null>(null);
+  const active = selected ?? recommendedPlatform;
 
   return (
     <div className={styles.grid}>
       {CARDS.map((card) => {
         const asset = release.assets[card.platform];
         const recommended = DETECTED_MATCH[card.platform] === detected;
+        const isSelected = active === card.platform;
         return (
           <div
             key={card.platform}
-            className={recommended ? `${styles.card} ${styles.cardRecommended}` : styles.card}>
+            role="button"
+            tabIndex={0}
+            onClick={() => setSelected(card.platform)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelected(card.platform);
+              }
+            }}
+            className={[styles.card, isSelected && styles.cardSelected]
+              .filter(Boolean)
+              .join(' ')}>
             {recommended && <span className={styles.badge}>Recommended</span>}
             <div className={styles.iconWrap}>
               <img src={card.icon} alt="" className={styles.icon} />
@@ -46,9 +64,14 @@ export default function DownloadCards(): ReactNode {
             <p className={styles.detail}>
               {card.detail} · ~{formatSize(asset.size)}
             </p>
-            <Link to={asset.url} className={`button button--primary ${styles.button}`}>
-              Download {release.tag}
-            </Link>
+            {isSelected && (
+              <Link
+                to={asset.url}
+                onClick={(e) => e.stopPropagation()}
+                className={`button button--primary ${styles.button}`}>
+                Download {release.tag}
+              </Link>
+            )}
           </div>
         );
       })}

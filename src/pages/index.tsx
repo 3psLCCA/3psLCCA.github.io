@@ -252,7 +252,7 @@ function HomepageHeader() {
             to="/docs/intro"
             variant="outlined"
             size="large">
-            Read the Docs
+            GETTING STARTED
           </Button>
         </Stack>
       </Container>
@@ -353,12 +353,31 @@ function DownloadSection() {
             <Card
               variant="outlined"
               sx={{
+                position: 'relative',
                 height: '100%',
                 textAlign: 'center',
+                overflow: 'visible',
                 borderColor: active === d.key ? 'primary.main' : undefined,
                 borderWidth: active === d.key ? 2 : 1,
                 '&:hover': {boxShadow: 4},
               }}>
+              {detected === d.key && (
+                <Chip
+                  label="Recommended"
+                  color="primary"
+                  size="small"
+                  sx={{
+                    position: 'absolute',
+                    top: -12,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    fontWeight: 700,
+                    fontSize: '0.68rem',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                  }}
+                />
+              )}
               <CardContent
                 onClick={() => setSelected(d.key)}
                 role="button"
@@ -390,15 +409,17 @@ function DownloadSection() {
                 <Typography variant="body2" color="text.secondary" sx={{mb: 2}}>
                   {d.detail}
                 </Typography>
-                <Button
-                  component={Link}
-                  to={d.href}
-                  variant="contained"
-                  disableElevation
-                  fullWidth
-                  onClick={(e) => e.stopPropagation()}>
-                  Download
-                </Button>
+                {active === d.key && (
+                  <Button
+                    component={Link}
+                    to={d.href}
+                    variant="contained"
+                    disableElevation
+                    fullWidth
+                    onClick={(e) => e.stopPropagation()}>
+                    Download
+                  </Button>
+                )}
               </CardContent>
             </Card>
           </Grid>
