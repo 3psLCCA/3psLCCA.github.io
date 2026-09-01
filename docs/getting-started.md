@@ -77,3 +77,37 @@ threePSLCCA
 
 Continue to [Concepts](./concepts.md) to understand how the 3psLCCA framework structures a
 bridge life cycle cost assessment.
+
+## Uninstall
+
+### Windows (installer)
+
+1. Open **Settings → Apps → Installed Apps**.
+2. Search for **3psLCCA**, click it, and select **Uninstall**.
+3. Follow the uninstaller prompts.
+
+### Linux (installer)
+
+Run the uninstaller script that was placed in the installation directory:
+
+```bash
+~/.local/share/3psLCCA/uninstall.sh
+```
+
+Or use your desktop environment's software manager to remove **3psLCCA**.
+
+### Conda
+
+Deactivate the environment first if it is active:
+
+```bash
+conda deactivate
+```
+
+Then remove the entire environment:
+
+```bash
+conda env remove -n 3pslcca
+```
+
+This removes the application and all its dependencies installed in that environment.

@@ -19,7 +19,7 @@ const config: Config = {
   // Org/user GitHub Pages sites (repo named "<org>.github.io") are served at
   // the domain root, so baseUrl stays '/'. This requires the deploying repo
   // to actually be named "3psLCCA.github.io" (currently it's "3psLCCA",
-  // which GitHub instead serves at /3psLCCA/ — rename the repo to match).
+  // which GitHub instead serves at /3psLCCA/ - rename the repo to match).
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -83,10 +83,39 @@ const config: Config = {
       },
       items: [
         {
+          to: '/#about',
+          label: 'About',
+          position: 'right',
+          activeBaseRegex: 'NOMATCH',
+        },
+        {
+          to: '/#publications',
+          label: 'Publications',
+          position: 'right',
+          activeBaseRegex: 'NOMATCH',
+        },
+        {
+          to: '/#download',
+          label: 'Installation',
+          position: 'right',
+          activeBaseRegex: 'NOMATCH',
+        },
+        {
+          to: '/#contribute',
+          label: 'Contribute',
+          position: 'right',
+          activeBaseRegex: 'NOMATCH',
+        },
+        {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'right',
           label: 'Docs',
+        },
+        {
+          to: '/contact',
+          label: 'Contact Us',
+          position: 'right',
         },
         {
           href: 'https://github.com/3psLCCA',
@@ -99,21 +128,12 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Introduction',
-              to: '/docs/intro',
-            },
-            {
-              label: 'Getting Started',
-              to: '/docs/getting-started',
-            },
-          ],
-        },
-        {
           title: 'More',
           items: [
+            {
+              label: 'Documentation',
+              to: '/docs/intro',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/3psLCCA',
@@ -126,6 +146,23 @@ const config: Config = {
             {
               label: 'LinkedIn',
               href: 'https://in.linkedin.com/company/osdag',
+            },
+          ],
+        },
+        {
+          title: 'Contact Us',
+          items: [
+            {
+              label: 'Address: [todo]',
+              to: '#',
+            },
+            {
+              label: 'Email: [todo]',
+              to: '#',
+            },
+            {
+              label: 'Phone: [todo]',
+              to: '#',
             },
           ],
         },

@@ -7,6 +7,7 @@ import {useColorMode} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
 import type {ReleaseData} from '../../plugins/latest-release-plugin';
 import {usePlatform, type DetectedPlatform} from '../utils/usePlatform';
+import {publications, type PublicationStatus} from '../data/publications';
 
 import {
   ThemeProvider,
@@ -231,8 +232,7 @@ function HomepageHeader() {
         <Typography
           color="text.secondary"
           sx={{maxWidth: 560, mx: 'auto', mb: 4}}>
-          Free desktop software for steel &amp; PSC girder short-span
-          bridges, built around the 3psLCCA framework.
+          Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment framework).
         </Typography>
         <Stack
           direction="row"
@@ -246,13 +246,6 @@ function HomepageHeader() {
             size="large"
             disableElevation>
             Download {tag}
-          </Button>
-          <Button
-            component={Link}
-            to="/docs/intro"
-            variant="outlined"
-            size="large">
-            GETTING STARTED
           </Button>
         </Stack>
       </Container>
@@ -306,35 +299,154 @@ function FeatureCard({accent, label, title, children}: FeatureCardProps) {
 
 function AboutSection() {
   return (
-    <Section eyebrow="Overview" title="About the Software">
+    <Section id="about" eyebrow="Overview" title="About the Software">
       <Typography sx={{maxWidth: 860, mb: 4, fontSize: '1.05rem'}}>
         <strong>3psLCCA</strong> is a desktop application for evaluating the
-        full economic life cycle of bridge infrastructure - construction,
-        maintenance, traffic disruption, carbon impact, and end-of-life
-        recycling - combined into a single monetary metric via the{' '}
-        <strong>3psLCCA</strong> (Three Pillars of Sustainability LCC)
-        framework.
+        life cycle cost of bridges across the initial, use, and end-of-life
+        stages. It accounts for a comprehensive range of costs, including
+        construction, inspection, maintenance, traffic disruptions, demolition,
+        recycling, and other associated costs. The software is based on the{' '}
+        <strong>3PS-LCC</strong> (Three Pillars of Sustainability Life Cycle
+        Cost Assessment) framework which integrates these costs into a single
+        monetary metric while capturing the economic, environmental, and social
+        dimensions of sustainability throughout the bridge life cycle.
       </Typography>
       <Grid container spacing={3}>
         <FeatureCard accent="blue" label="Goal" title="One metric, three pillars">
-          Rank bridge design alternatives on total life cycle cost -
-          economic, environmental, and social impact expressed in the same
-          currency.
+          Evaluate bridge design alternatives by integrating economic,
+          environmental, and social impacts into a single monetary life cycle
+          cost.
         </FeatureCard>
-        <FeatureCard accent="orange" label="Audience" title="Built for engineers">
-          Bridge engineers, infrastructure planners, and researchers
-          comparing design options beyond upfront construction cost.
+        <FeatureCard accent="orange" label="Audience" title="Built for stakeholders">
+          Different stakeholders, including project planners, government
+          authorities, designers, and researchers, who seek long-term,
+          sustainable bridge solutions.
         </FeatureCard>
-        <FeatureCard accent="green" label="Problem" title="Fragmented tooling">
-          General LCA tools skip cost and social impact; bridge tools like
-          BridgeLCC or GreenBridge each cover only one pillar. 3psLCCA
-          unifies all three.
+        <FeatureCard accent="green" label="Problem" title="Fragmented assessment">
+          Existing methods and tools typically assess individual sustainability
+          pillars separately, making holistic bridge evaluation difficult. The
+          3PS-LCC framework unifies all three pillars across the bridge life
+          cycle.
         </FeatureCard>
-        <FeatureCard accent="blue" label="Difference" title="Reports built in">
-          Every result is comparable in one currency, with PDF report
-          generation included - no separate tooling required.
+        <FeatureCard accent="blue" label="Difference" title="Submission-ready reports">
+          Generate professional, detailed reports with results, assumptions,
+          tables, figures, and key analysis outputs - ready for documentation,
+          review, and submission.
         </FeatureCard>
       </Grid>
+    </Section>
+  );
+}
+
+function statusColor(status?: PublicationStatus): 'success' | 'warning' | undefined {
+  if (status === 'Accepted') return 'success';
+  if (status === 'Submitted') return 'warning';
+  return undefined;
+}
+
+function PublicationsSection() {
+  const [index, setIndex] = useState(0);
+  const total = publications.length;
+  const pub = publications[index];
+
+  const goTo = (i: number) => setIndex(((i % total) + total) % total);
+
+  return (
+    <Section id="publications" eyebrow="Research" title="Publications">
+      <Typography sx={{maxWidth: 860, mb: 4, fontSize: '1.05rem'}}>
+        The 3PS-LCC framework is grounded in peer-reviewed research. Key
+        publications underpinning the methodology are listed below.
+      </Typography>
+
+      <Box sx={{maxWidth: 860, mx: 'auto'}}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'stretch',
+            gap: 1,
+          }}>
+          <Button
+            onClick={() => goTo(index - 1)}
+            aria-label="Previous publication"
+            sx={{minWidth: 44, fontSize: '1.5rem'}}>
+            ‹
+          </Button>
+
+          <Box
+            sx={{
+              flex: 1,
+              p: 3,
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 2,
+            }}>
+            <Stack direction="row" spacing={1} sx={{mb: 0.75}}>
+              <Chip
+                label={pub.type}
+                size="small"
+                color={pub.type === 'Journal Article' ? 'primary' : undefined}
+                variant="outlined"
+              />
+              {pub.status && (
+                <Chip
+                  label={pub.status}
+                  size="small"
+                  color={statusColor(pub.status)}
+                  variant="outlined"
+                />
+              )}
+            </Stack>
+            <Typography sx={{fontWeight: 600, mb: 0.75}}>{pub.title}</Typography>
+            <Typography variant="body2" color="text.secondary" sx={{mb: 0.5}}>
+              {pub.authors}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{fontStyle: 'italic', mb: pub.link ? 1.5 : 0}}>
+              {pub.venue}
+            </Typography>
+            {pub.link && (
+              <Link to={pub.link} style={{fontSize: '0.9rem'}}>
+                View publication →
+              </Link>
+            )}
+          </Box>
+
+          <Button
+            onClick={() => goTo(index + 1)}
+            aria-label="Next publication"
+            sx={{minWidth: 44, fontSize: '1.5rem'}}>
+            ›
+          </Button>
+        </Box>
+
+        <Stack direction="row" spacing={1} sx={{justifyContent: 'center', mt: 2}}>
+          {publications.map((_, i) => (
+            <Box
+              key={i}
+              component="button"
+              aria-label={`Go to publication ${i + 1}`}
+              onClick={() => goTo(i)}
+              sx={{
+                width: 8,
+                height: 8,
+                p: 0,
+                borderRadius: '50%',
+                border: 'none',
+                cursor: 'pointer',
+                bgcolor: i === index ? 'primary.main' : 'divider',
+              }}
+            />
+          ))}
+        </Stack>
+
+        <Box sx={{textAlign: 'center', mt: 3}}>
+          <Button component={Link} to="/publications" variant="outlined">
+            View all publications
+          </Button>
+        </Box>
+      </Box>
     </Section>
   );
 }
@@ -346,7 +458,7 @@ function DownloadSection() {
   const active = selected ?? detected;
 
   return (
-    <Section id="download" eyebrow="Get Started" title="Getting and Using It" surface>
+    <Section id="download" eyebrow="Get Started" title="Download" surface>
       <Grid container spacing={3}>
         {downloads.map((d) => (
           <Grid size={{xs: 12, sm: 6, md: 3}} key={d.label}>
@@ -581,7 +693,7 @@ function CommunitySection() {
 
 function ContributingSection() {
   return (
-    <Section eyebrow="Open Source" title="Contributing and Code">
+    <Section id="contribute" eyebrow="Open Source" title="Contribute">
       <InfoList>
         <InfoRow question="Source code">
           <Link to="https://github.com/3psLCCA/3psLCCA-gui">3psLCCA-gui</Link> (GUI) and{' '}
@@ -628,8 +740,7 @@ function NoJsFallback() {
             assessment for bridges
           </p>
           <p>
-            Free desktop software for steel &amp; PSC girder short-span
-            bridges, built around the 3psLCCA framework.
+            Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment framework).
           </p>
           <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
             <a className="button button--primary button--lg" href={releaseUrl}>
@@ -647,19 +758,45 @@ function NoJsFallback() {
           <h2>About the Software</h2>
           <p>
             <strong>3psLCCA</strong> is a desktop application for evaluating
-            the full economic life cycle of bridge infrastructure -
-            construction, maintenance, traffic disruption, carbon impact, and
-            end-of-life recycling - combined into a single monetary metric
-            via the <strong>3psLCCA</strong> (Three Pillars of Sustainability
-            LCC) framework. It's built for bridge engineers, infrastructure
-            planners, and researchers who need to compare design
-            alternatives on total life cycle cost, not just upfront
-            construction cost.
+            the life cycle cost of bridges across the initial, use, and
+            end-of-life stages. It accounts for a comprehensive range of costs,
+            including construction, inspection, maintenance, traffic disruptions,
+            demolition, recycling, and other associated costs. The software is
+            based on the <strong>3PS-LCC</strong> (Three Pillars of
+            Sustainability Life Cycle Cost Assessment) framework which integrates
+            these costs into a single monetary metric while capturing the
+            economic, environmental, and social dimensions of sustainability
+            throughout the bridge life cycle.
           </p>
         </section>
 
+        <section id="publications" className="margin-bottom--lg">
+          <h2>Publications</h2>
+          <p>
+            The 3PS-LCC framework is grounded in peer-reviewed research. Key
+            publications underpinning the methodology:
+          </p>
+          <ul>
+            <li>
+              <strong>Journal Article:</strong> Pajgade, R. P., Raghunandan, M., &amp; Ghosh, S. (2025). <em>An Integrated Life Cycle Cost Assessment Framework Incorporating Cost of Carbon Dioxide Equivalent for Buildings Subjected to Natural Hazards</em>. Sustainable Cities and Society, 126, 106394. <a href="https://www.sciencedirect.com/science/article/pii/S2210670725002707" target="_blank" rel="noopener noreferrer">ScienceDirect</a>
+            </li>
+            <li>
+              <strong>Conference Paper:</strong> Pajgade, R. P., Mahasrankintakam, A. B., Jha, M. K., Ghosh, S., &amp; Raghunandan, M. (2025). <em>A comparative life cycle cost assessment of short-span road bridges with prestressed concrete girders and steel girders</em>. In 9th International Symposium on Life Cycle Civil Engineering (IALCCE 2025), Melbourne, Australia.
+            </li>
+            <li>
+              <strong>Conference Paper (Accepted):</strong> Khare, N., Mahasrankintakam, A. B., Sulakhe, R. P., Gupta, S., Pajgade, R. P., Tankala, S., Raghunandan, M., &amp; Ghosh, S. (2026). <em>A Life-Cycle Sustainability Assessment Framework for Bridges with Parametric Evaluation of Social and Environmental Factors</em>. In 3rd International Conference on Net-Zero Built Environment: Innovations in Materials, Structures, and Management Practices (Net-Zero Future 2026), Darmstadt, Germany.
+            </li>
+            <li>
+              <strong>Conference Paper (Submitted):</strong> Mahasrankintakam, A. B., Pajgade, R. P., Gupta, S., Ghosh, S., Raghunandan, M., George, C., Najwani, G., &amp; Karia, P. C. (2026). <em>Development of Life Cycle Cost Assessment Tool for Short-Span Bridges</em>. In 12th International Conference on the Behaviour of Steel Structures in Seismic Areas (STESSA 2026), New Delhi, India.
+            </li>
+            <li>
+              <strong>Conference Paper (Accepted):</strong> Pajgade, R. P., Tankala, S., Raghunandan, M., Ghosh, S., Mahasrankintakam, A. B., Chikhalikar, S., &amp; Jha, M. K. (2026). <em>Life Cycle Cost Comparison of Steel Bridges Across Seismic Zones</em>. In 12th International Conference on the Behaviour of Steel Structures in Seismic Areas (STESSA 2026), New Delhi, India.
+            </li>
+          </ul>
+        </section>
+
         <section className="margin-bottom--lg">
-          <h2>Getting and Using It</h2>
+          <h2>Download</h2>
           <p>
             Download the latest release ({release.tag}) directly from{' '}
             <a href={releaseUrl}>GitHub Releases</a> - Windows and Linux
@@ -717,7 +854,7 @@ function NoJsFallback() {
         </section>
 
         <section>
-          <h2>Contributing and Code</h2>
+          <h2>Contribute</h2>
           <ul>
             <li>
               Source code:{' '}
@@ -769,6 +906,7 @@ function HomeContent() {
         <HomepageHeader />
         <main>
           <AboutSection />
+          <PublicationsSection />
           <DownloadSection />
           <LicenseSection />
           <CommunitySection />

@@ -54,7 +54,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  /* Fixed light background (not a theme token) — the platform SVGs are
+  /* Fixed light background (not a theme token) - the platform SVGs are
      colored for a light backdrop and would wash out on a dark one. */
   background: #f5f5f5;
 }

@@ -4,6 +4,17 @@
  * work well for content-centric websites.
  */
 
+/* Smooth scrolling for anchor links (navbar, in-page links). */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Brand palette sampled from the 3psLCCA logo (indigo/blue, orange, green). */
 :root {
   --ifm-color-primary: #5457c6;

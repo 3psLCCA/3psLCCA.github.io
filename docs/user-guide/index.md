@@ -11,7 +11,7 @@ title: Overview
 
 ---
 
-**3psLCCA** is a desktop application for **Life Cycle Cost Analysis (LCCA)** of bridge infrastructure projects, developed at IIT Bombay.
+**3psLCCA** is a desktop application for evaluating the life cycle cost of bridges across the initial, use, and end-of-life stages. It accounts for a comprehensive range of costs, including construction, inspection, maintenance, traffic disruptions, demolition, recycling, and other associated costs. The software is based on the **3PS-LCC** (Three Pillars of Sustainability Life Cycle Cost Assessment) framework which integrates these costs into a single monetary metric while capturing the economic, environmental, and social dimensions of sustainability throughout the bridge life cycle.
 
 LCCA evaluates the total cost of a bridge across its entire service life - not just initial construction, but maintenance, repair, demolition, recycling, and associated environmental and social costs. All costs are brought to a common present-day value using discounting, allowing direct comparison of different design alternatives.
 
