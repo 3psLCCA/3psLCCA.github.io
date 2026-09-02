@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: '3psLCCA',
-  tagline: 'Integrated economic, environmental & social life cycle cost assessment for bridges',
+  tagline: 'Integrated economic, environmental and social life cycle cost assessment for bridges',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

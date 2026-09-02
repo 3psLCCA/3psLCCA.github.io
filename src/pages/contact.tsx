@@ -5,7 +5,7 @@ import styles from './contact.module.css';
 
 const EMAIL = 'osdag@fossee.in';
 
-// Inline SVG icons — no extra dependency needed.
+// Inline SVG icons - no extra dependency needed.
 function IconBuilding() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -143,7 +143,7 @@ export default function ContactPage(): React.ReactElement {
               <h1 className={styles.title}>Contact Us</h1>
               <p className={styles.subtitle}>
                 Have questions about 3psLCCA, want to collaborate, or need
-                support? Reach out to the team at IIT Bombay — we're happy
+                support? Reach out to the team at IIT Bombay - we're happy
                 to hear from you.
               </p>
               <hr />

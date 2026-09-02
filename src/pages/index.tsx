@@ -263,7 +263,7 @@ function HomepageHeader() {
         <Typography
           color="text.secondary"
           sx={{maxWidth: 560, mx: 'auto', mb: 4}}>
-          Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment framework).
+          Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment) framework.
         </Typography>
         <Stack
           direction="row"
@@ -714,14 +714,11 @@ function CommunitySection() {
   return (
     <Section eyebrow="Support" title="Community and Help" surface>
       <InfoList>
-        <InfoRow question="Report a bug or ask a question">
+        <InfoRow question="Report a bug or request a feature">
           <Link to="https://github.com/3psLCCA/3psLCCA-gui/issues">GitHub Issues</Link>
         </InfoRow>
-        <InfoRow question="Chat room / forum / mailing list">
-          <Todo>none set up yet</Todo>
-        </InfoRow>
-        <InfoRow question="Talk to other users and creators">
-          Currently through GitHub Issues; a dedicated community channel is <Todo />
+        <InfoRow question="Ask a question or discuss with the community">
+          <Link to="https://github.com/3psLCCA/3psLCCA-gui/discussions">GitHub Discussions</Link>
         </InfoRow>
       </InfoList>
     </Section>
@@ -773,11 +770,11 @@ function NoJsFallback() {
           />
           <h1 className="hero__title">3psLCCA</h1>
           <p className="hero__subtitle">
-            Integrated economic, environmental &amp; social life cycle cost
+            Integrated economic, environmental and social life cycle cost
             assessment for bridges
           </p>
           <p>
-            Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment framework).
+            Free software for life cycle cost assessment of bridges, built around the 3PS-LCC (Three Pillars of Sustainability Life Cycle Cost Assessment) framework.
           </p>
           <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
             <a className="button button--primary button--lg" href={releaseUrl}>
@@ -959,7 +956,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="3psLCCA - integrated economic, environmental & social life cycle cost assessment for bridges.">
+      description="3psLCCA - integrated economic, environmental and social life cycle cost assessment for bridges.">
       <noscript>
         <style>{`.js-required { display: none !important; } .no-js-fallback { display: block !important; }`}</style>
       </noscript>
