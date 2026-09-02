@@ -338,15 +338,15 @@ function AboutSection() {
         construction, inspection, maintenance, traffic disruptions, demolition,
         recycling, and other associated costs. The software is based on the{' '}
         <strong>3PS-LCC</strong> (Three Pillars of Sustainability Life Cycle
-        Cost Assessment) framework which integrates these costs into a single
-        monetary metric while capturing the economic, environmental, and social
-        dimensions of sustainability throughout the bridge life cycle.{' '}
-        The framework methodology is described in full in{' '}
+        Cost Assessment) framework as explained in{' '}
         <Link
           to="https://www.sciencedirect.com/science/article/pii/S2210670725002707"
           style={{whiteSpace: 'nowrap'}}>
-          Pajgade et al. (2025) →
+          Pajgade et al. (2025)
         </Link>
+        {' '}which integrates these costs into a single monetary metric while
+        capturing the economic, environmental, and social dimensions of
+        sustainability throughout the bridge life cycle.
       </Typography>
       <Grid container spacing={3}>
         <FeatureCard accent="blue" label="Goal" title="One metric, three pillars">
