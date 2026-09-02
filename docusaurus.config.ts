@@ -89,14 +89,14 @@ const config: Config = {
           activeBaseRegex: 'NOMATCH',
         },
         {
-          to: '/#publications',
-          label: 'Publications',
+          to: '/#download',
+          label: 'Download',
           position: 'right',
           activeBaseRegex: 'NOMATCH',
         },
         {
-          to: '/#download',
-          label: 'Installation',
+          to: '/#publications',
+          label: 'Publications',
           position: 'right',
           activeBaseRegex: 'NOMATCH',
         },
@@ -128,24 +128,40 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'More',
+          title: 'Software',
           items: [
+            {
+              label: 'About',
+              to: '/#about',
+            },
+            {
+              label: 'Download',
+              to: '/#download',
+            },
+            {
+              label: 'Publications',
+              to: '/#publications',
+            },
             {
               label: 'Documentation',
               to: '/docs/intro',
             },
+          ],
+        },
+        {
+          title: 'Connect',
+          items: [
             {
               label: 'GitHub',
               href: 'https://github.com/3psLCCA',
             },
-          ],
-        },
-        {
-          title: 'Social Media',
-          items: [
             {
               label: 'LinkedIn',
               href: 'https://in.linkedin.com/company/osdag',
+            },
+            {
+              label: 'Website',
+              href: 'https://3pslcca.github.io/',
             },
           ],
         },
@@ -153,21 +169,17 @@ const config: Config = {
           title: 'Contact Us',
           items: [
             {
-              label: 'Address: [todo]',
-              to: '#',
+              label: 'Structural Safety, Risk and Reliability Lab, IIT Bombay',
+              href: 'https://maps.app.goo.gl/ppw7TRbMudnyukZ49',
             },
             {
-              label: 'Email: [todo]',
-              to: '#',
-            },
-            {
-              label: 'Phone: [todo]',
-              to: '#',
+              label: 'Contact page →',
+              to: '/contact',
             },
           ],
         },
       ],
-      copyright: 'Made with ❤️ by Team Osdag',
+      copyright: 'Made with ❤️ by Team Osdag · Osdag, FOSSEE, IIT Bombay',
     },
     prism: {
       theme: prismThemes.github,

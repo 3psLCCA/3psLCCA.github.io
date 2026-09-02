@@ -72,12 +72,43 @@ const INSTALL_INSTRUCTIONS: Record<DetectedPlatform, ReactNode> = {
     <>
       Run the downloaded <code>.exe</code> installer and follow the setup
       wizard prompts.
+      <br />
+      <span style={{fontSize: '0.85em', opacity: 0.75}}>
+        <strong>Seeing a "Windows protected your PC" warning?</strong> This is
+        Windows SmartScreen - it appears for newly released software that hasn't
+        yet built up a wide download history. The installer is safe. Click{' '}
+        <strong>More info</strong>, then <strong>Run anyway</strong> to proceed.
+      </span>
     </>
   ),
   linux: (
     <>
-      Make the downloaded <code>.sh</code> script executable (
-      <code>chmod +x</code>) and run it from a terminal.
+      Open a terminal, then follow these steps:
+      <ol style={{margin: '0.6rem 0 0', paddingLeft: '1.4rem', lineHeight: 2}}>
+        <li>
+          Open a terminal and navigate to the folder where you saved the
+          file - for example:{' '}
+          <code>cd ~/Downloads</code> if you kept the default download
+          location.
+        </li>
+        <li>
+          Make the installer executable - this is a one-time permission step
+          required on Linux before you can run any <code>.sh</code> script:
+          {' '}<code>chmod +x threePSLCCA-*.sh</code>
+          <br />
+          <span style={{fontSize: '0.85em', opacity: 0.75}}>
+            The <code>*</code> is a wildcard - the terminal automatically
+            fills in the version number and architecture from the filename
+            (e.g. <code>threePSLCCA-1.1.9-Linux-x86_64.sh</code>). You type
+            it exactly as shown.
+          </span>
+        </li>
+        <li>
+          Run the installer:{' '}
+          <code>./threePSLCCA-*.sh</code>
+          {' '}- then follow the on-screen prompts.
+        </li>
+      </ol>
     </>
   ),
   other: (
@@ -309,7 +340,13 @@ function AboutSection() {
         <strong>3PS-LCC</strong> (Three Pillars of Sustainability Life Cycle
         Cost Assessment) framework which integrates these costs into a single
         monetary metric while capturing the economic, environmental, and social
-        dimensions of sustainability throughout the bridge life cycle.
+        dimensions of sustainability throughout the bridge life cycle.{' '}
+        The framework methodology is described in full in{' '}
+        <Link
+          to="https://www.sciencedirect.com/science/article/pii/S2210670725002707"
+          style={{whiteSpace: 'nowrap'}}>
+          Pajgade et al. (2025) →
+        </Link>
       </Typography>
       <Grid container spacing={3}>
         <FeatureCard accent="blue" label="Goal" title="One metric, three pillars">
@@ -906,8 +943,8 @@ function HomeContent() {
         <HomepageHeader />
         <main>
           <AboutSection />
-          <PublicationsSection />
           <DownloadSection />
+          <PublicationsSection />
           <LicenseSection />
           <CommunitySection />
           <ContributingSection />
